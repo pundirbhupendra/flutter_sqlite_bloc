@@ -10,7 +10,6 @@ class LoadEmployee extends EmployeeEvent {
   @override
   List<Object> get props => [];
 }
-
 class Delete extends EmployeeEvent {
   int id;
   Delete({this.id});

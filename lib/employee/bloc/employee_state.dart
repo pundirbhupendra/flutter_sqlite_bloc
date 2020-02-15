@@ -24,7 +24,6 @@ class EmployeeListLoaded extends EmployeeState {
   @override
   List<Object> get props => [employeeList];
 }
-
 class EmployeeError extends EmployeeState {
   final message;
   EmployeeError({@required this.message});

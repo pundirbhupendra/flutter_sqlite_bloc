@@ -4,7 +4,6 @@ import 'package:flutter_sqlite_bloc/employee/bloc/bloc.dart';
 import 'package:flutter_sqlite_bloc/employee/models/employee.dart';
 import 'package:flutter_sqlite_bloc/repository/repository.dart';
 
-
 class EmployeeBloc extends Bloc<EmployeeEvent, EmployeeState> {
   Repository repository;
 
@@ -24,15 +23,14 @@ class EmployeeBloc extends Bloc<EmployeeEvent, EmployeeState> {
     } else if (event is Delete) {
       await repository.delete(event.id);
       yield* _reload();
-    } else if(event is Update){
-        await repository.update(event.updateEmployee);
-         yield* _reload();
+    } else if (event is Update) {
+      await repository.update(event.updateEmployee);
+      yield* _reload();
     }
   }
 
   Stream<EmployeeState> _reload() async* {
     try {
-
       List<Employee> employeeList = await repository.getEmployees();
       yield EmployeeListLoaded(employeeList: employeeList);
     } catch (ex) {
